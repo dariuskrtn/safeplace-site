@@ -1,11 +1,16 @@
 <template>
     <div id="register">
-        <div><video ref="video" id="video" width="640" height="480" autoplay></video></div>
+        <div class="row">
+            <div class="col-md-4">
+                <video ref="video" id="video" width="640" height="480" autoplay></video>
+            </div>
+        </div>
+
         <div><button id="snap" v-on:click="capture()">Snap Photo</button></div>
         <canvas ref="canvas" id="canvas" width="640" height="480"></canvas>
-            <div v-for="c in captures">
-                <img v-bind:src="c" height="50" />
-            </div>
+        <div v-for="c in captures">
+            <img v-bind:src="c" height="50" />
+        </div>
     </div>
 </template>
 
@@ -15,6 +20,11 @@ import Component from 'vue-class-component';
 
 @Component({})
 export default class Register extends Vue {
+    public isCapturing : boolean = false;
+    public name : string = "";
+    public lastName : string = "";
+    public 
+
     public video : any;
     public canvas : any = null;
     public captures : any[] = [];

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as config from './config';
 
-export default(data: any = null) => {
+export default() => {
     return axios.create({
         baseURL: config.default.baseUrl,
         withCredentials: false,
@@ -9,6 +9,5 @@ export default(data: any = null) => {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        data: data
     })
 }

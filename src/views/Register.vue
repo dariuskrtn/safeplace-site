@@ -23,7 +23,7 @@ export default class Register extends Vue {
     public isCapturing : boolean = false;
     public name : string = "";
     public lastName : string = "";
-    public 
+
 
     public video : any;
     public canvas : any = null;

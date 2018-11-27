@@ -5,4 +5,9 @@ export default class Floor {
     public cameras : Camera[] = [];
     public floorName : string = "";
     public floorMapUri : string = "";
+
+    //to create objects for testing
+    constructor(message: string) {
+        this.floorName = message;
+    }
 }

@@ -24,7 +24,7 @@ export interface Mutations {
 }
 
 const state: State = {
-    currentFloor: null,
+    currentFloor: new Floor("FFFfloor"),
     floorList: [],
 }
 
@@ -35,6 +35,7 @@ const mutations: DefineMutations<Mutations, State> = {
     save(state, { floor }) {
         return Api().post(config.default.api.saveFloor, floor);
     }
+    
 }
 
 const actions: DefineActions<Actions, State, Mutations, Getters> = {

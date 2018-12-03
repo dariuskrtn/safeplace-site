@@ -8,7 +8,7 @@
                     <h4> {{floorName}} </h4>
                 </div>
                 <div>
-                    <img :src="'pathMaybe'" alt = "Failed to upload floor image">
+                    <img alt = "Failed to upload floor image">
                 </div>
 
 
@@ -54,7 +54,18 @@ import store from '@/store/store';
 export default class Home extends Vue {
     floorName: string = this.$store.state.floor.currentFloor.floorName;
     floorList = this.$store.state.floor.floorList;
-    //spottedPeople = 
+
+
+    public data (){
+    }
+
+    public mounted() {
+        alert("1")
+        this.$store.dispatch('floor/load');
+        alert("2")
+        this.floorName = this.$store.state.floor.currentFloor.floorName;
+    }
+    
     
 }
 </script>

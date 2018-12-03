@@ -1,4 +1,4 @@
-enum CameraStatus {
+export enum CameraStatus {
     Offline,
     Empty,
     Good,

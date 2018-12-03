@@ -1,18 +1,14 @@
 export default {
     baseUrl: 'http://localhost:54507/api',
     api: {
-        getFloor: '/floors/',
         getFloors: '/floors/',
-        saveFloor: '/floors/',
+        saveFloor: '/floors/save/',
 
-        getPerson: '/people/',
         getPeople: '/people/',
-        savePersonInfo: '/people',
+        savePersonInfo: '/people/save',
         savePersonImage: '/people/image/save',
 
-        getCamera: '/Cameras',
-        getCameras: '/Cameras',
-        saveCamera: '/Cameras',
-        updateCamera: '/Cameras'
+        getCameras: '/cameras',
+        saveCamera: '/cameras/save'
     }
 }

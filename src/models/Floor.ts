@@ -2,12 +2,8 @@ import Camera from './Camera';
 
 export default class Floor {
     public guid : string = "";
-    public cameras : string[] = [];
-    public floorName : string = "";
-    public floorMapUri : string = "";
+    public cameras : Camera[] = [];
+    public name : string = "";
+    public imagePath : string = "";
 
-    //to create objects for testing
-    constructor(message: string) {
-        this.floorName = message;
-    }
 }

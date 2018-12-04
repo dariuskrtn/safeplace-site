@@ -11,5 +11,6 @@ new Vue({
   render: (h) => h(App),
   created: () => {
       store.dispatch("camera/load");
+      store.dispatch('floor/load');
   },
 }).$mount('#app');

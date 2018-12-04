@@ -5,7 +5,7 @@ import * as config from '../../api/config';
 import Floor from '@/models/Floor';
 
 export interface State {
-    currentFloor: Floor|null,
+    currentFloor: Floor,
     floorList: Floor[],
 }
 export interface Getters {}
@@ -24,7 +24,7 @@ export interface Mutations {
 }
 
 const state: State = {
-    currentFloor: new Floor("FFFfloor"),
+    currentFloor: new Floor(),
     floorList: [],
 }
 

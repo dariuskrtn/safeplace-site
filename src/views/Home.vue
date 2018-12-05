@@ -4,11 +4,26 @@
             <div class="floor">
               
                 floor
+
                 <div>
                     <h4> {{currentFloorName}} </h4>
                 </div>
                 <div>
-                    <img alt = "Failed to upload floor image">
+                   <ul id="v-for-object" class="demo">
+                        <li v-for="value in getCamera('1c5167cd-95c3-4ad9-9d6d-5f3067b85566')">
+                            {{ value }}
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                   <ul class="demo">
+                        <li v-for="value in getCurrentCameras()">
+                            {{ value }}
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <img <!--src="http://localhost:54507/api/images/2d0c3a05-5b96-49d5-b20e-4b3a9de89357" --> alt = "Failed to upload floor image">
                 </div>
 
 
@@ -54,9 +69,15 @@ import Floor from '@/models/Floor';
 export default class Home extends Vue {
     
     public floorList: Floor[] = this.$store.state.floor.floorList;
+    public cameraList: Camera[] = this.$store.state.camera.cameraList;
+    
     public currentFloor: Floor = this.$store.state.floor.currentFloor;
     //when putting currentFloor.name it destroys page when currentFloor is null
     public currentFloorName: string = this.currentFloor.name;
+    public JustCameras : Camera[] = this.currentFloor.cameras;
+    public FirstCamera : Camera = this.currentFloor.cameras[0];
+
+    
     //public something: Floor = this.floorList[0];
     
     public ShowUpperFloor(){
@@ -73,9 +94,40 @@ export default class Home extends Vue {
     }
 
     public mounted() {
-        //this.$store.dispatch('floor/load')
-        
+        this.getCurrentCameras();
     }
+
+    public ifCorrectGuid(camera : Camera, guid : string){
+        return camera.guid === 'guid';
+    }
+
+    public getCurrentCameras(){
+        var someCameras : Camera[] =[];
+            this.currentFloor.cameras.forEach(camera => {
+               var temp = this.cameraList.find(cam => cam.guid == "95777b1b-9f98-4bad-8fff-837a7b41dc63");
+               //[Tomas] a bit of workaround, can not find better solution - find can return undefine, and camera can not be ondefined (can;t null as well)
+               camera = temp? temp : camera;
+               someCameras.push(camera);
+            })
+            return someCameras;
+    }
+
+    public getCamera(guid : string){
+        return this.cameraList.find(cam => cam.guid == guid);
+    }
+
+    // public getCameras(){
+        // this.floorList.forEach(floor => {
+        //     floor.cameras.forEach(camera => {
+        //        var temp = this.cameraList.find(cam => cam.guid == "1c5167cd-95c3-4ad9-9d6d-5f3067b85566");
+        //        //[Tomas] a bit of workaround, can not find better solution - find can return undefine, and camera can not be ondefined (can;t null as well)
+        //        camera = temp? temp : camera;
+
+
+        //     }) 
+        // })
+    // }
+
     
     
 }

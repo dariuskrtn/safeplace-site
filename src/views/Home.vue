@@ -70,18 +70,12 @@ export default class Home extends Vue {
     
     public floorList: Floor[] = this.$store.state.floor.floorList;
     public cameraList: Camera[] = this.$store.state.camera.cameraList;
-    
     public currentFloor: Floor = this.$store.state.floor.currentFloor;
     //when putting currentFloor.name it destroys page when currentFloor is null
     public currentFloorName: string = this.currentFloor.name;
     public JustCameras : Camera[] = this.currentFloor.cameras;
-    public FirstCamera : Camera = this.currentFloor.cameras[0];
-
-    
-    //public something: Floor = this.floorList[0];
     
     public ShowUpperFloor(){
-        //this.$store.state.floor.currentFloor;
         var index = this.$store.state.floor.floorList.indexOf(this.currentFloor);
         if (index > 0)
         this.currentFloor = this.$store.state.floor.currentFloor = this.$store.state.floor.floorList[index-1]; 
@@ -97,10 +91,7 @@ export default class Home extends Vue {
         this.getCurrentCameras();
     }
 
-    public ifCorrectGuid(camera : Camera, guid : string){
-        return camera.guid === 'guid';
-    }
-
+    // does not work as expected
     public getCurrentCameras(){
         var someCameras : Camera[] =[];
             this.currentFloor.cameras.forEach(camera => {
@@ -114,21 +105,7 @@ export default class Home extends Vue {
 
     public getCamera(guid : string){
         return this.cameraList.find(cam => cam.guid == guid);
-    }
-
-    // public getCameras(){
-        // this.floorList.forEach(floor => {
-        //     floor.cameras.forEach(camera => {
-        //        var temp = this.cameraList.find(cam => cam.guid == "1c5167cd-95c3-4ad9-9d6d-5f3067b85566");
-        //        //[Tomas] a bit of workaround, can not find better solution - find can return undefine, and camera can not be ondefined (can;t null as well)
-        //        camera = temp? temp : camera;
-
-
-        //     }) 
-        // })
-    // }
-
-    
+    } 
     
 }
 </script>
